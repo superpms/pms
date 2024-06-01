@@ -1,0 +1,44 @@
+{
+    "name": "superpms/pms",
+    "description": "this is a php api framework",
+    "type": "project",
+    "license": "Apache-2.0",
+    "keywords": [
+        "framework",
+        "pmsphp"
+    ],
+    "authors": [
+        {
+            "name": "Guest",
+            "email": "kid666@88.com"
+        }
+    ],
+    "scripts": {
+        "dev:http": [
+            "php -S localhost:8080 -t public"
+        ],
+        "dev:win:http-swoole": [
+            "swoole-cli http.php"
+        ],
+        "dev:linux:http-swoole": [
+            "php http.php"
+        ],
+        "dev:mac:http-swoole": [
+            "php http.php"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "core\\": "core",
+            "plugins\\": "plugins"
+        }
+    },
+    "require": {
+        "php": ">=8.1",
+        "superpms/framework": "^1.0"
+    },
+    "require-dev": {
+        "swoole/ide-helper": "^4.6.3"
+    }
+}
