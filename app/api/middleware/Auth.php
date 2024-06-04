@@ -6,7 +6,7 @@ use pms\Middleware;
 
 class Auth extends Middleware {
 
-    public function handle()
+    public function handle(): void
     {
         // TODO: Implement handle() method.
     }
