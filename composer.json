@@ -3,6 +3,7 @@
     "description": "this is a php api framework",
     "type": "project",
     "license": "Apache-2.0",
+    "minimum-stability": "dev",
     "keywords": [
         "framework",
         "pmsphp"
@@ -15,15 +16,19 @@
     ],
     "scripts": {
         "dev:http": [
-            "php -S localhost:8080 -t public"
+            "Composer\\Config::disableProcessTimeout",
+            "php -S localhost:8001 -t public"
         ],
         "dev:win:http-swoole": [
+            "Composer\\Config::disableProcessTimeout",
             "swoole-cli http.php"
         ],
         "dev:linux:http-swoole": [
+            "Composer\\Config::disableProcessTimeout",
             "php http.php"
         ],
         "dev:mac:http-swoole": [
+            "Composer\\Config::disableProcessTimeout",
             "php http.php"
         ]
     },
@@ -39,6 +44,7 @@
         "superpms/framework": "^1.0"
     },
     "require-dev": {
-        "swoole/ide-helper": "^4.6.3"
+        "swoole/ide-helper": "^4.6.3",
+        "symfony/var-dumper": "6.4.*"
     }
 }

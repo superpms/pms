@@ -2,10 +2,8 @@
 
 namespace app\api\package;
 
-use pms\facade\Db;
-use pms\facade\RDb;
-
-class Index extends Common{
+class Index extends Common
+{
     protected array $validate = [
         'name' => [
             'require' => false,
@@ -14,14 +12,17 @@ class Index extends Common{
         ],
     ];
 
+    protected string $contentType = PLAIN_CONTENT_TYPE;
+
     protected string|array $method = 'post,get';
     protected string $login = 'false';
-    protected bool $token = false;
 
-    public function entry(): void{
-        // $name = $this->safeParams['name'];
-        $name = $this->request->params('name','pmsphp');
+    public function entry()
+    {
+        // $name = $this->safeParams->get('name);
+        $name = $this->request->params('name', 'pmsphp');
         $this->success("hello $name");
     }
+
 
 }
