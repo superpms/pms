@@ -14,12 +14,6 @@
             "email": "kid666@88.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../composer/pms/framework"
-        }
-    ],
     "scripts": {
         "dev:http": [
             "Composer\\Config::disableProcessTimeout",
