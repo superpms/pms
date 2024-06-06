@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\package;
+namespace app\api;
 
 
 use pms\annotate\Inject;
@@ -8,18 +8,33 @@ use pms\app\Http;
 use pms\app\inject\http\RequestInject;
 use pms\app\inject\http\SafeParamsInject;
 
-abstract class Common extends Http
+abstract class Package extends Http
 {
-    protected string $login = LOGIN_TRUE;
+    /**
+     * 【插件:superpms/auth】登录状态检测中间件
+     * @package plugins\superpms\auth\middleware\LoginAuthMiddleware
+     * @var int 是否进行登录状态检测
+     */
+    protected int $login = LOGIN_FALSE;
 
-    protected bool $token = true;
+    /**
+     * 【插件:superpms/auth】接口请求签名检测中间件
+     * @package plugins\superpms\auth\middleware\RequestAuthException
+     * @var bool 是否进行请求签名检测
+     */
+    protected bool $token = false;
 
-    protected array|string $terminal = [];
-
-
+    /**
+     * 依赖注入
+     * @var SafeParamsInject 当前接口安全参数
+     */
     #[Inject(SafeParamsInject::class)]
     protected SafeParamsInject $safeParams;
 
+    /**
+     * 依赖注入
+     * @var RequestInject 当前接口请求对象
+     */
     #[Inject(RequestInject::class)]
     protected RequestInject $request;
 

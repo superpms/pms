@@ -2,7 +2,10 @@
 
 namespace app\api\package;
 
-class Index extends Common
+use app\api\Package;
+use plugins\superpms\auth\action\AuthAction;
+
+class Index extends Package
 {
     protected array $validate = [
         'name' => [
@@ -15,10 +18,9 @@ class Index extends Common
     protected string $contentType = PLAIN_CONTENT_TYPE;
 
     protected string|array $method = 'post,get';
-    protected string $login = 'false';
+    protected int $login = LOGIN_TRUE;
 
-    public function entry()
-    {
+    public function entry(): void{
         // $name = $this->safeParams->get('name);
         $name = $this->request->params('name', 'pmsphp');
         $this->success("hello $name");

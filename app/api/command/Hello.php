@@ -5,6 +5,8 @@ namespace app\api\command;
 use pms\annotate\Inject;
 use pms\app\Command;
 use pms\app\inject\command\InputInject;
+use pms\app\inject\command\OutputInject;
+use pms\facade\CommandOutput;
 
 class Hello extends Command{
 
@@ -24,7 +26,12 @@ class Hello extends Command{
     #[Inject(InputInject::class)]
     protected InputInject $input;
 
+    #[Inject(OutputInject::class)]
+    protected OutputInject $output;
+
     public function entry(): void{
-        $this->input->getArguments();
+        $this->input->getArgument();
+//        CommandOutput::writeLn("hello {$this->input->getArgument('name')} {$this->input->getOption('city')}");
+        $this->output->writeLn("hello {$this->input->getArgument('name')} {$this->input->getOption('city')}");
     }
 }

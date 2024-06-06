@@ -1,0 +1,6 @@
+{
+    "name": "superpms/auth",
+    "description": "官方鉴权插件",
+    "version": "1.0.0",
+    "config": true
+}

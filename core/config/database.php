@@ -14,9 +14,9 @@ return [
             // 数据库类型
             'type' => 'mysql',
             // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-            'deploy' => 1,
+            'deploy' => 0,
             // 数据库读写是否分离 主从式有效
-            'rw_separate' => true,
+            'rw_separate' => false,
             // 主机地址
             'hostname' => '127.0.0.1',
             // 数据库端口

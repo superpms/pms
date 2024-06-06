@@ -2,7 +2,7 @@
 
 namespace app\api\middleware;
 
-use pms\Middleware;
+use pms\app\Middleware;
 
 class Auth extends Middleware {
 
