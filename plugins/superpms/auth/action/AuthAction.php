@@ -15,7 +15,7 @@ class AuthAction{
      * @return string 签名结果
      */
     public static function signature(string $data,string $salting,string $privateKey): string{
-        return md5(md5("$data\r\n@$salting@\r\n$privateKey"));
+        return md5(md5("$data\n@$salting@\n$privateKey"));
     }
 
     /**
@@ -24,19 +24,20 @@ class AuthAction{
      * @param int $userid 登录用户标识信息
      * @return string 签名结果
      */
-    public static function loginAuthSignature(int $expireTime, int $userid): string{
+    public static function loginAuthSignature(int $expireTime, int $userid,string $terminal): string{
         $privetKey = self::config('auth-privet-key');
         $salting = self::config('auth-salting');
-        return self::signature("$expireTime\r\n|$userid",$salting,$privetKey);
+        return self::signature("$expireTime\n|$userid|\n$terminal",$salting,$privetKey);
     }
 
-    public static function buildLoginAuthData(int $expireTime,int $userid,array $other = []): array
+    public static function buildLoginAuthData(int $expireTime,int $userid,string $terminal,array $other = []): array
     {
         return [
             ...$other,
-            'token' => self::loginAuthSignature($expireTime,$userid),
+            'token' => self::loginAuthSignature($expireTime,$userid,$terminal),
             'id' => self::idShifting($userid),
             'expire_time' => $expireTime,
+            'terminal' => $terminal,
         ];
     }
 

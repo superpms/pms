@@ -7,6 +7,7 @@ return [
     'request-salting'=>'pms-auth-request',
     // 请求签名所在标头名称
     'header-request-token'=>'x-request-token',
+    'header-request-time'=>'x-request-time',
     // 单个请求有效时间(秒)
     'request-time'=>60,
 

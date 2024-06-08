@@ -24,12 +24,12 @@ class LoginAuthMiddleware extends Middleware
         }
     }
 
-    protected function login($login): void
-    {
+    protected function login($login): void{
         $userid = $this->request->header(self::config('header-userid', 'x-id'), '');
         $token = $this->request->header(self::config('header-token', 'x-token'), '');
+        $terminal = $this->request->header(self::config('header-terminal', 'x-terminal'), '');
         $expireTime = (int)$this->request->header(self::config('header-expire-time', 'x-expire-time'), '');
-        if ($userid === '' || $token === '') {
+        if ($userid === '' || $token === '' || empty($terminal)) {
             if ($login === LOGIN_FALSE || $login === LOGIN_OR) {
                 $this->request->setAttach('userinfo', 0);
                 return;
@@ -38,8 +38,12 @@ class LoginAuthMiddleware extends Middleware
             }
         }
         $userid = AuthAction::idUnShifting($userid);
-        $realToken = AuthAction::loginAuthSignature($expireTime, $userid);
+        $realToken = AuthAction::loginAuthSignature($expireTime, $userid,$terminal);
         if ($realToken !== $token) {
+            if ($login === LOGIN_FALSE || $login === LOGIN_OR){
+                $this->request->setAttach('userinfo', 0);
+                return;
+            }
             throw new LoginAuthException('未登录');
         }
         if($expireTime !== 0 && $expireTime < time()){

@@ -21,13 +21,9 @@ class RequestAuthMiddleware extends Middleware{
         }
     }
 
-    protected function getRequestToken(): string|null{
-        return $this->request->header(self::config('header-request-token','x-request-token'));
-    }
-
     protected function token(): void{
-        $rTime = $this->request->server('request_time');
-        $rToken = $this->getRequestToken();
+        $rTime = $this->request->header(self::config('header-request-time','x-request-time'));
+        $rToken = $this->request->header(self::config('header-request-token','x-request-token'));
         $effectTime = self::config('request-time',0);
         if($effectTime === 0){
             return;
