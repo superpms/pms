@@ -23,7 +23,7 @@ return [
         // 允许跨域的方法
         'Access-Control-Allow-Methods'=>'GET,POST,PUT,DELETE,OPTIONS',
         // 允许跨域携带的请求头
-        'Access-Control-Allow-Headers'=>'x-request-time,x-request-token',
+        'Access-Control-Allow-Headers'=>'content-type,x-request-time,x-request-token,x-token,x-id,x-expire-time',
 //        'Access-Control-Allow-Credentials'=>'true',
 //        'Access-Control-Expose-Headers'=>'Content-Length,Content-Type,Authorization',
     ],

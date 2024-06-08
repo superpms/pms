@@ -43,26 +43,32 @@ abstract class Package extends Http
         $this->responseData = $data;
     }
 
-    public function success(mixed $data, $code = 200, array $other = []): mixed
+    public function success(mixed $data, array $other = []): mixed
     {
         $this->responseData = [
             'data' => $data,
-            'code' => $code,
+            'code' => 200,
         ];
         if(!empty($other)){
-            $this->responseData['other'] = $other;
+            $this->responseData = [
+                ...$this->responseData,
+                ...$other
+            ];
         }
         return $this->responseData;
     }
 
-    public function error(mixed $message, $code = 500, array $other = []): mixed
+    public function error(mixed $message, $code = 300, array $other = []): mixed
     {
         $this->responseData = [
             'message' => $message,
             'code' => $code,
         ];
         if(!empty($other)){
-            $this->responseData['other'] = $other;
+            $this->responseData = [
+                ...$this->responseData,
+                ...$other
+            ];
         }
         return $this->responseData;
     }
@@ -71,6 +77,16 @@ abstract class Package extends Http
     {
         $this->responseData = $message;
         return $this->responseData;
+    }
+
+    protected function params(string $key=null, $default = null): array|string|null
+    {
+        return $this->request->params($key, $default);
+    }
+
+    protected function safe(string $key=null, $default = null): array|string|null
+    {
+        return $this->safeParams->get($key, $default);
     }
 
 }

@@ -20,25 +20,23 @@ class AuthAction{
 
     /**
      * 登录认证签名
-     * @param int $time 登录时间时（10位时间戳）
-     * @param int $lastTime token过期时间（10位时间戳）
+     * @param int $expireTime token过期时间（10位时间戳）
      * @param int $userid 登录用户标识信息
      * @return string 签名结果
      */
-    public static function loginAuthSignature(int $time, int $lastTime, int $userid): string{
+    public static function loginAuthSignature(int $expireTime, int $userid): string{
         $privetKey = self::config('auth-privet-key');
         $salting = self::config('auth-salting');
-        return self::signature("$time\r\n|$lastTime\r\n|$userid",$salting,$privetKey);
+        return self::signature("$expireTime\r\n|$userid",$salting,$privetKey);
     }
 
-    public static function buildLoginAuthData(int $userid,int $requestTime,int $lastTime,array $other = []): array
+    public static function buildLoginAuthData(int $expireTime,int $userid,array $other = []): array
     {
         return [
             ...$other,
-            'token' => self::loginAuthSignature($requestTime,$lastTime,$userid),
-            'userid' => self::idShifting($userid),
-            'time' => $requestTime,
-            'last_time' => $lastTime,
+            'token' => self::loginAuthSignature($expireTime,$userid),
+            'id' => self::idShifting($userid),
+            'expire_time' => $expireTime,
         ];
     }
 

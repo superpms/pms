@@ -3,7 +3,6 @@
     "description": "this is a php api framework",
     "type": "project",
     "license": "Apache-2.0",
-    "minimum-stability": "dev",
     "keywords": [
         "framework",
         "pmsphp"
@@ -17,7 +16,7 @@
     "scripts": {
         "dev:http": [
             "Composer\\Config::disableProcessTimeout",
-            "php -S localhost:8001 -t public"
+            "php pms run:http-web"
         ],
         "dev:win:http-swoole": [
             "Composer\\Config::disableProcessTimeout",

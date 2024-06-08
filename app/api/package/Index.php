@@ -3,7 +3,6 @@
 namespace app\api\package;
 
 use app\api\Package;
-use plugins\superpms\auth\action\AuthAction;
 
 class Index extends Package
 {
@@ -14,11 +13,7 @@ class Index extends Package
             'des' => 'name',
         ],
     ];
-
-    protected string $contentType = PLAIN_CONTENT_TYPE;
-
-    protected string|array $method = 'post,get';
-    protected int $login = LOGIN_TRUE;
+    protected string|int|array $method = METHOD_POST|METHOD_GET;
 
     public function entry(): void{
         // $name = $this->safeParams->get('name);

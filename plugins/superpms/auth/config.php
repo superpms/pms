@@ -21,9 +21,7 @@ return [
     'header-token'=>'x-token',
     // 登录认证用户标识信息所在标头名称
     'header-userid'=>'x-id',
-    // 登录时间所在标头名称
-    'header-time'=>'x-time',
     // 登录认证过期时间标头名称
-    'header-last-time'=>'x-last-time',
+    'header-expire-time'=>'x-expire-time',
 
 ];

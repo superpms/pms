@@ -2,5 +2,5 @@
 <?php
 namespace pms;
 require './vendor/autoload.php';
-$http = (new App(__DIR__))->command;
+(new App())->command;
 

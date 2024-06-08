@@ -1,4 +1,4 @@
 <?php
 namespace pms;
-require '../vendor/autoload.php';
-(new App(dirname(__DIR__)))->httpWeb;
+require __DIR__ . '/../vendor/autoload.php';
+(new App())->httpWeb;
