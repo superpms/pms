@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\superpms\auth\exception;
+namespace plugins\superpms\login;
 
 use RuntimeException;
 

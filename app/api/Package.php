@@ -12,17 +12,25 @@ abstract class Package extends Http
 {
     /**
      * 【插件:superpms/auth】登录状态检测中间件
-     * @package plugins\superpms\auth\middleware\LoginAuthMiddleware
+     * @package  \plugins\superpms\auth\login\LoginAuthMiddleware
      * @var int 是否进行登录状态检测
      */
     protected int $login = LOGIN_FALSE;
 
     /**
      * 【插件:superpms/auth】接口请求签名检测中间件
-     * @package plugins\superpms\auth\middleware\RequestAuthException
+     * @package  \plugins\superpms\auth\request\RequestAuthMiddleware
      * @var bool 是否进行请求签名检测
      */
     protected bool $token = false;
+
+    /**
+     * 【插件:superpms/auth】权限检测中间件
+     * @package plugins\superpms\auth\authority\authorityMiddleware
+     * @var string|array 权限标识
+     */
+    protected string|array $authority = [];
+
 
     /**
      * 依赖注入

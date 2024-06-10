@@ -2,9 +2,10 @@
 
 namespace app\api;
 
-use plugins\superpms\auth\exception\LoginAuthException;
-use plugins\superpms\auth\exception\RequestAuthException;
-use \pms\ExceptionHandle as basHandle;
+use plugins\superpms\login\AuthorityAuthException;
+use plugins\superpms\login\LoginAuthException;
+use plugins\superpms\request\RequestAuthException;
+use pms\ExceptionHandle as basHandle;
 
 class ExceptionHandle extends basHandle
 {
@@ -19,6 +20,11 @@ class ExceptionHandle extends basHandle
         }else if($exception instanceof RequestAuthException){
             $data = [
                 'code' => 403,
+                'message' => $exception->getMessage(),
+            ];
+        }else if($exception instanceof AuthorityAuthException){
+            $data = [
+                'code' => 404,
                 'message' => $exception->getMessage(),
             ];
         }else{

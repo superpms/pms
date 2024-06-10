@@ -1,6 +1,6 @@
 <?php
 return [
-    'debug'=>true,
+    'debug'=>false,
     'default_timezone'=>'Asia/Shanghai',
     'package_name'=>'package',
     'apps'=>[

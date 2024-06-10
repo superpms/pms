@@ -1,8 +1,4 @@
 <?php
-// 当前配置文件已被 运行环境代理
-// 即：
-// dev.lock文件存在，则使用开发环境配置（.\development\database.php）
-// 否则使用生产环境配置（.\production\database.php）
 return [
     'default'=>'connection1',
     // 自动写入时间戳字段
@@ -26,11 +22,11 @@ return [
             // 数据库端口
             'port' => '3306',
             // 数据库名
-            'database' => 'pmsphp',
+            'database' => 'pmsphp-production',
             // 用户名
             'username' => 'pmsphp',
             // 密码
-            'password' => 'pmsphp',
+            'password' => '123456',
             // 数据库编码默认采用utf8
             'charset' => 'utf8',
             // 数据库表前缀

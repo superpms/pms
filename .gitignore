@@ -7,7 +7,6 @@ Thumbs.db
 /.idea
 /.vscode
 /vendor
-/runtime
 /.settings
 /.buildpath
 /.project

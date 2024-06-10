@@ -1,0 +1,24 @@
+{
+    "name": "superpms/login",
+    "description": "官方登录鉴权中间件插件",
+    "type": "middleware",
+    "version": "1.0.0",
+    "config": true,
+    "require": {},
+    "useProperty": [
+        "login"
+    ],
+    "useAppFile": [],
+    "useAppFolder": [],
+    "useRequestHeader": [
+       "x-token",
+       "x-id",
+       "x-expire-time",
+       "x-terminal"
+    ],
+    "useConst": [
+        "LOGIN_TRUE",
+        "LOGIN_FALSE",
+        "LOGIN_OR"
+    ]
+}

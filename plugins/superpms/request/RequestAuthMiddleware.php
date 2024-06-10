@@ -1,8 +1,6 @@
 <?php
 
-namespace plugins\superpms\auth\middleware;
-use plugins\superpms\auth\action\AuthAction;
-use plugins\superpms\auth\exception\RequestAuthException;
+namespace plugins\superpms\request;
 use pms\app\Middleware;
 use pms\app\Plugins;
 
@@ -31,7 +29,7 @@ class RequestAuthMiddleware extends Middleware{
         if(empty($rToken)){
             throw new RequestAuthException("请求验证失败");
         }else{
-            $realToken = AuthAction::requestAuthSignature($rTime);
+            $realToken = RequestAction::requestAuthSignature($rTime);
             if($rToken !== $realToken || (time() - $rTime > $effectTime)){
                 throw new RequestAuthException("请求验证失败");
             }
