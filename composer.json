@@ -3,7 +3,6 @@
     "description": "this is a php api framework",
     "type": "project",
     "license": "Apache-2.0",
-    "minimum-stability": "dev",
     "keywords": [
         "framework",
         "pmsphp"
@@ -12,12 +11,6 @@
         {
             "name": "Guest",
             "email": "kid666@88.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "path",
-            "url": "C:\\devEnv\\Project\\rapid-flow\\composer\\pms\\framework"
         }
     ],
     "scripts": {
